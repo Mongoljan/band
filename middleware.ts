@@ -3,14 +3,21 @@ import { defaultLocale } from "./constants/locales";
 import { i18n } from "./i18n-config";
 
 export function middleware(request: NextRequest) {
-  // Check if there is any supported locale in the pathname
   const { pathname } = request.nextUrl;
 
+  // Define your Content Security Policy
+  const csp = `
+    child-src 'self' blob:;
+    worker-src 'self' blob:;
+    script-src 'self' https://cdn.logrocket.io https://cdn.lr-ingest.io https://cdn.lr-in.com https://cdn.lr-in-prod.com https://cdn.lr-ingest.com https://cdn.ingest-lr.com;
+    connect-src https://*.logrocket.io https://*.lr-ingest.io https://*.logrocket.com https://*.lr-in.com https://*.lr-in-prod.com https://*.lr-ingest.com https://*.ingest-lr.com;
+  `.replace(/\s+/g, ' ').trim(); // Normalize spaces
+
+  // Check if there is any supported locale in the pathname
   if (
     pathname.startsWith(`/${defaultLocale}/`) ||
     pathname === `/${defaultLocale}`
   ) {
-    // The incoming request is for /en/whatever, so we'll reDIRECT to /whatever
     return NextResponse.redirect(
       new URL(
         pathname.replace(
@@ -27,8 +34,6 @@ export function middleware(request: NextRequest) {
   );
 
   if (pathnameIsMissingLocale) {
-    // Now for EITHER /en or /nl (for example) we're going to tell Next.js that the request is for /en/whatever
-    // or /nl/whatever, and then reWRITE the request to that it is handled properly.
     return NextResponse.rewrite(
       new URL(
         `/${defaultLocale}${pathname}${request.nextUrl.search}`,
@@ -36,13 +41,16 @@ export function middleware(request: NextRequest) {
       )
     );
   }
+
+  // Create a response and set the Content Security Policy header
+  const response = NextResponse.next();
+  response.headers.set("Content-Security-Policy", csp);
+  
+  return response;
 }
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next)
     "/((?!_next).*)",
-    // Optional: only run on root (/) URL
-    // '/'
   ],
 };
