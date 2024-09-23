@@ -4,7 +4,7 @@ import React from "react";
 import ThemeSwitcher from "./ThemeSwitcher";
 import LogRocket from "logrocket";
 
-
+LogRocket.init('jw1z3h/comex');
 
 
 interface HeaderDictionary {
@@ -12,7 +12,7 @@ interface HeaderDictionary {
 }
 
 export default function Header({ dict, lang }: { dict: HeaderDictionary; lang: string }) {
-  LogRocket.init('jw1z3h/comex');
+
   return (
     <div className="header flex justify-between items-center py-4 max-w-[1200px] px-20 w-full">
       <div className="flex-1 text-base font-bold">{dict.title}</div>
