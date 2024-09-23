@@ -15,4 +15,4 @@ export default function MainLayout({ children, dict, lang }: Props) {
       <Footer dict={dict} />
     </div>
   );
-}
+} 

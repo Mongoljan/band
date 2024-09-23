@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import {
   AiFillMoon,
@@ -58,5 +57,4 @@ const ThemeSwitcher = () => {
     </>
   );
 };
-
 export default ThemeSwitcher;

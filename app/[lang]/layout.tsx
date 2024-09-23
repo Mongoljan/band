@@ -29,8 +29,8 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} className="h-full">
-      <head />
-      <body className={`${inter.className} h-full`}>
+      
+      <body className={`${inter.className} h-full `}>
         <ThemeProvider defaultTheme="dark" enableSystem disableTransitionOnChange>
           <MainLayout dict={dict} lang={lang}>
             {children}
@@ -39,4 +39,4 @@ export default async function RootLayout({
       </body>
     </html>
   );
-}
+}  
