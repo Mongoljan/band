@@ -1,7 +1,6 @@
 'use client'
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import React, { ReactNode, useState, useEffect } from "react";
+import React from "react";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 
