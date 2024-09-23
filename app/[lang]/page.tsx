@@ -1,6 +1,6 @@
 import { getDictionary } from "./dictionaries";
 import Product from "@/components/product";
-import LogRocket from 'logrocket';
+// import LogRocket from 'logrocket';
 
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 export default async function Home({ params }: Props) {
   const { lang } = params;
 
-  LogRocket.init('jw1z3h/comex');
+  // LogRocket.init('jw1z3h/comex');
   const dict = await getDictionary(lang);
 
   return (
