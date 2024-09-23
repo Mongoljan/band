@@ -2,9 +2,9 @@
 import Link from "next/link";
 import React from "react";
 import ThemeSwitcher from "./ThemeSwitcher";
-import LogRocket from "logrocket";
+// import LogRocket from "logrocket";
 
-LogRocket.init('jw1z3h/comex');
+// LogRocket.init('jw1z3h/comex');
 
 
 interface HeaderDictionary {
