@@ -29,8 +29,15 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} className="h-full">
-      
-      <body className={`${inter.className} h-full `}>
+      {/* <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;600;800&display=swap" 
+          rel="stylesheet" 
+        />
+      </head> */}
+      <body className={`${inter.className} font-mulish h-full`}>
         <ThemeProvider defaultTheme="dark" enableSystem disableTransitionOnChange>
           <MainLayout dict={dict} lang={lang}>
             {children}
@@ -39,4 +46,4 @@ export default async function RootLayout({
       </body>
     </html>
   );
-}  
+}

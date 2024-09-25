@@ -17,7 +17,7 @@ interface Dictionary {
     return (
       <div className="flex flex-col h-full bg-slate-100 dark:bg-base-100 items-center">
         <Header dict={dict} lang={lang} />
-        <div className="main flex-grow flex justify-center">{children}</div>
+        <div className="main flex-grow flex justify-center ">{children}</div>
         <Footer dict={dict} />
       </div>
     );
